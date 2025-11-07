@@ -2,37 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Comment;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    function index(){
-    $data= Tag::all();
-    return view('tag/index',['tags'=>$data,'pageTitle'=>'blog']);
-}
-function create(){
-    Tag::create([
-        'title'=>'software engineering'
-    ]);
-    return redirect('/tags');
-}
- public function testManyToMany(){
-   /*  $post1=Post::find(1);
-    $post2=Post::find(2);
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $data= Tag::all();
+        return view('tag/index',['tags'=>$data,'pageTitle'=>'Tags']);
+    }
 
-    $post1->tags()->attach([1,2]);
-    $post2->tags()->attach([1]);
-    return response()->json(([
-        'post1'=>$post1->tags,
-        'post2'=>$post2->tags()
-    ])); */
-    $tag=Tag::find(3);
-    $tag->posts()->attach([1]);
-    return response()->json(([
-        'tag'=>$tag->title,
-        'posts'=>$tag->posts
-    ]));
- }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('tag.create',['pageTitle'=>'tags-created tag']);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $tag=Tag::findOrFail($id);
+        return view('tag.show',['tag'=>$tag,'pageTitle'=>'Tags-page']);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        return view('tag.edit',['pageTitle'=>'Tag-edit-page']);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }
