@@ -10,10 +10,10 @@ class Comment extends Model
     use HasUuids;
     use HasFactory;
     protected $primaryKey='id';
-    protected $keyTybe='string';
-    public $incremeting =false;
-    protected $table='Comment';
-    protected $fillable=['author','contant','post_id'];
+    protected $keyType='string';
+    public $incrementing =false;
+    protected $table='comment';
+    protected $fillable=['author','content','post_id'];
     protected $guarded=['id'];
     public function post(){
         return $this->belongsTo(Post::class);

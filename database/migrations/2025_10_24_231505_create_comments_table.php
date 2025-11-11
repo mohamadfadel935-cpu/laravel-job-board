@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('author');
-            $table->string('contant');
+            $table->string('content');
             $table->timestamps();
-            $table->foreignId('post_id')->constrained('post')->cascadeOnDelete();
+            $table->uuid('post_id');
+            $table->foreign('post_id')->references('id')->on('post')->cascadeOnDelete();
+
         });
     }
 

@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Job-Board {{ isset($title) ?"- " .$title:"" }}</title>
-         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    </head>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>    </head>
     <body>
         <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
@@ -31,7 +30,7 @@
                <x-nav-link href="/" >Dashbord</x-nav-link>
                <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
-
+               <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
 
             </div>
           </div>
